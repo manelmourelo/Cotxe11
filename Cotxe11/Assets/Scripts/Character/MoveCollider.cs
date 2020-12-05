@@ -30,8 +30,11 @@ public class MoveCollider : MonoBehaviour
             Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
         }
 
-        Player.GetComponent<CharacterController>().can_move = false;
-    }
+        if (collision.gameObject.tag == "Ground") 
+        {
+            Player.GetComponent<CharacterController>().can_move = false;
+        }
+    } 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -42,7 +45,10 @@ public class MoveCollider : MonoBehaviour
             Physics2D.gravity = default_gravity;
         }
 
-        Player.GetComponent<CharacterController>().can_move = true;
+        if (collision.gameObject.tag == "Ground")
+        {
+            Player.GetComponent<CharacterController>().can_move = true;
+        }
     }
 
 }
