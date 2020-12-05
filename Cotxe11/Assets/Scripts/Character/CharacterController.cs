@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour
 
     private bool facing_right = true;
     private bool on_air = false;
+    public bool can_move = true;
 
     private Rigidbody2D character_rb = null;
 
@@ -26,40 +27,35 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            character_rb.AddForce(new Vector2(speed, 0f));
-            if (character_rb.velocity.x > max_speed)
-            {
-                character_rb.velocity = character_rb.velocity.normalized * max_speed;
-            }
             if (facing_right == false)
             {
                 Flip();
                 facing_right = true;
             }
+            if (can_move == true) {
+                Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
+                transform.position += movement * speed * Time.deltaTime;
+            }
         }
 
         if (Input.GetKey("a"))
         {
-            character_rb.AddForce(new Vector2(-speed, 0f));
-            if (character_rb.velocity.x < -max_speed)
-            {
-                character_rb.velocity = character_rb.velocity.normalized * max_speed;
-            }
             if (facing_right == true)
             {
                 Flip();
                 facing_right = false;
+            }
+            if (can_move == true) {
+                Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
+                transform.position += movement * speed * Time.deltaTime;
             }
         }
 
         if (Input.GetButtonDown("Jump") && on_air == false)
         {
             on_air = true;
-            //character_rb.AddForce(new Vector2(0f, jump_force));
-            //character_rb.velocity = Vector2.up * jump_force;
             character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
         }
-
 
     }
 
