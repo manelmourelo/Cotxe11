@@ -55,7 +55,9 @@ public class CharacterController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && on_air == false)
         {
             on_air = true;
-            character_rb.AddForce(new Vector2(0f, jump_force));
+            //character_rb.AddForce(new Vector2(0f, jump_force));
+            //character_rb.velocity = Vector2.up * jump_force;
+            character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
         }
 
 
