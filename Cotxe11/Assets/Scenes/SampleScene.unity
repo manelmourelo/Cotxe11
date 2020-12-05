@@ -156,6 +156,7 @@ MonoBehaviour:
   speed: 5
   jump_force: 5
   max_speed: 5
+  on_air: 0
   can_move: 1
 --- !u!61 &227688383
 BoxCollider2D:
@@ -241,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227688381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.76, y: -3.1, z: 0}
+  m_LocalPosition: {x: -9.25, y: -3.1, z: 0}
   m_LocalScale: {x: 4.9206, y: 4.9206, z: 4.9206}
   m_Children:
   - {fileID: 1779481330}
@@ -468,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.119691, y: -0.44999743, z: -10}
+  m_LocalPosition: {x: -8.609691, y: -0.44999743, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -912,7 +913,7 @@ GameObject:
   - component: {fileID: 1445611987}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1103,7 +1104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652012727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.119691, y: -0.44999743, z: -10}
+  m_LocalPosition: {x: -8.609691, y: -0.44999743, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499764930}
