@@ -6,12 +6,16 @@ public class CharacterController : MonoBehaviour
 {
     public float speed = 1.0f;
     public float jump_force = 200.0f;
+    public float max_speed = 5.0f;
 
     private bool facing_right = true;
+
+    private Rigidbody2D character_rb = null;
 
     // Start is called before the first frame update
     void Start()
     {
+        character_rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,7 +25,11 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, 0f));
+            character_rb.AddForce(new Vector2(speed, 0f));
+            if (character_rb.velocity.x > max_speed)
+            {
+                character_rb.velocity = character_rb.velocity.normalized * max_speed;
+            }
             if (facing_right == false)
             {
                 Flip();
@@ -31,7 +39,11 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey("a"))
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, 0f));
+            character_rb.AddForce(new Vector2(-speed, 0f));
+            if (character_rb.velocity.x < -max_speed)
+            {
+                character_rb.velocity = character_rb.velocity.normalized * max_speed;
+            }
             if (facing_right == true)
             {
                 Flip();
@@ -41,7 +53,7 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jump_force));
+            character_rb.AddForce(new Vector2(0f, jump_force));
         }
 
 
