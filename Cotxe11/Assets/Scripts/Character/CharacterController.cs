@@ -12,6 +12,8 @@ public class CharacterController : MonoBehaviour
     private bool on_air = false;
     public bool can_move = true;
 
+    private int current_jumps = 0;
+
     private Rigidbody2D character_rb = null;
 
     // Start is called before the first frame update
@@ -51,9 +53,11 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && on_air == false)
+        if (Input.GetButtonDown("Jump") && current_jumps < 2)
         {
+            current_jumps++;
             on_air = true;
+            character_rb.velocity = new Vector2(0.0f,0.0f);
             character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
         }
 
@@ -70,6 +74,7 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            current_jumps = 0;
             on_air = false;
         }
     }
