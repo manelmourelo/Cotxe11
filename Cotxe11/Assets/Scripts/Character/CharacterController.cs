@@ -8,10 +8,13 @@ public class CharacterController : MonoBehaviour
     public float jump_force = 200.0f;
     public float max_speed = 5.0f;
     public float bounce_multiplier = 3.0f;
+    public float climb_speed = 2.0f;
+
 
     private bool facing_right = true;
     private bool on_air = false;
     public bool can_move = true;
+    public bool can_climb = false;
 
     private int current_jumps = 0;
 
@@ -54,12 +57,27 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && current_jumps < 2)
+        if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
         {
             current_jumps++;
             on_air = true;
             character_rb.velocity = new Vector2(0.0f,0.0f);
             character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
+        }
+
+        if (can_climb)
+        {
+            if (Input.GetKey("space"))
+            {
+                Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
+                transform.position += (movement * climb_speed * Time.deltaTime);
+            }
+
+            if (Input.GetKey("s"))
+            {
+                Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
+                transform.position += movement * climb_speed * Time.deltaTime;
+            }
         }
 
     }
