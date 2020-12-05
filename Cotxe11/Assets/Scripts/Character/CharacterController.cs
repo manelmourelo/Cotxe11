@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
     public float max_speed = 5.0f;
 
     private bool facing_right = true;
+    private bool on_air = false;
 
     private Rigidbody2D character_rb = null;
 
@@ -51,8 +52,9 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && on_air == false)
         {
+            on_air = true;
             character_rb.AddForce(new Vector2(0f, jump_force));
         }
 
@@ -64,6 +66,14 @@ public class CharacterController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            on_air = false;
+        }
     }
 
 }
