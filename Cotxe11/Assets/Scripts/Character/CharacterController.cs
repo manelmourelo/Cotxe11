@@ -106,4 +106,13 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Orb")
+        {
+            Destroy(collision.gameObject);
+            transform.gameObject.GetComponent<ProgressBar>().current_orbs++;
+        }
+    }
+
 }
