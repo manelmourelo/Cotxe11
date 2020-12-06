@@ -27,6 +27,7 @@ public class MoveCollider : MonoBehaviour
         {
             if (Player.GetComponent<CharacterController>() != null) {
                 Player.GetComponent<CharacterController>().can_climb = true;
+                Player.GetComponent<CharacterController>().can_move = false;
                 Physics2D.gravity = new Vector2(0, 0);
                 Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
             }
@@ -52,6 +53,7 @@ public class MoveCollider : MonoBehaviour
             if (Player.GetComponent<CharacterController>() != null)
             {
                 Player.GetComponent<CharacterController>().can_climb = false;
+                Player.GetComponent<CharacterController>().can_move = true;
                 Physics2D.gravity = default_gravity;
             }
         }
