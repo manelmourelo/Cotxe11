@@ -200,7 +200,7 @@ MonoBehaviour:
   jump_force: 5
   max_speed: 5
   bounce_multiplier: 3
-  climb_speed: 1
+  climb_speed: 2
   on_air: 0
   can_move: 1
   can_climb: 0

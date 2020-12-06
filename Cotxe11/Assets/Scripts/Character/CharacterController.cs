@@ -84,6 +84,10 @@ public class CharacterController : MonoBehaviour
 
         if (can_climb)
         {
+
+            current_jumps = 1;
+            on_air = true;
+
             if (Input.GetKey("w"))
             {
                 Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
@@ -98,8 +102,7 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                current_jumps = 1;
-                on_air = true;
+                
                 character_rb.velocity = new Vector2(0.0f, 0.0f);
 
                 if (facing_right)
