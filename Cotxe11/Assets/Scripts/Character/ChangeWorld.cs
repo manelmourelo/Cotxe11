@@ -9,6 +9,8 @@ public class ChangeWorld : MonoBehaviour
     public GameObject PlayerNight = null;
     public GameObject CMCamera = null;
     public GameObject WinCollider = null;
+    public AudioClip grab_audio = null;
+    public AudioClip night_music = null;
 
     private CinemachineVirtualCamera CMVirtualCam;
 
@@ -37,6 +39,12 @@ public class ChangeWorld : MonoBehaviour
 
             CMVirtualCam.Follow = PlayerNight.transform;
             transform.gameObject.SetActive(false);
+            CMCamera.GetComponent<AudioSource>().clip = night_music;
+            CMCamera.GetComponent<AudioSource>().Play();
+
+            PlayerNight.GetComponent<AudioSource>().clip = grab_audio;
+            PlayerNight.GetComponent<AudioSource>().Play();
+
         }
     }
 

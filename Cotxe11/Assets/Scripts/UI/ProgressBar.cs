@@ -12,6 +12,8 @@ public class ProgressBar : MonoBehaviour
 
     public float current_orbs = 0;
 
+    public AudioClip grab_audio = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,8 @@ public class ProgressBar : MonoBehaviour
         {
             Destroy(collision.gameObject);
             current_orbs++;
+            GetComponent<AudioSource>().clip = grab_audio;
+            GetComponent<AudioSource>().Play();
         }
     }
 

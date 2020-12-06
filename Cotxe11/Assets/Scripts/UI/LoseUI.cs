@@ -8,6 +8,7 @@ public class LoseUI : MonoBehaviour
 
     public GameObject Ghost = null;
     public GameObject plant = null;
+    public AudioSource camera_audio = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class LoseUI : MonoBehaviour
         Ghost.GetComponent<FlyEnergy>().progress_bar.fillAmount = PlayerPrefs.GetFloat("FlyEnergy");
         Ghost.GetComponent<FlyEnergy>().enough_energy = true;
         transform.parent.gameObject.SetActive(false);
+        camera_audio.Play();
     }
 
 }
