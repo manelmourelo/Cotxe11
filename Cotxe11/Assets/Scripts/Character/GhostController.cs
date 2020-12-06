@@ -17,6 +17,8 @@ public class GhostController : MonoBehaviour
 
     private Rigidbody2D character_rb = null;
 
+    public GameObject loseUI = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,52 +29,53 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         //Inputs
+        if (loseUI.activeSelf == false) {
+            if (Input.GetKey("d"))
+            {
+                if (facing_right == false)
+                {
+                    Flip();
+                    facing_right = true;
+                }
+                if (can_move == true)
+                {
+                    Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
+                    transform.position += movement * speed * Time.deltaTime;
+                }
+            }
 
-        if (Input.GetKey("d"))
-        {
-            if (facing_right == false)
+            if (Input.GetKey("a"))
             {
-                Flip();
-                facing_right = true;
+                if (facing_right == true)
+                {
+                    Flip();
+                    facing_right = false;
+                }
+                if (can_move == true)
+                {
+                    Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
+                    transform.position += movement * speed * Time.deltaTime;
+                }
             }
-            if (can_move == true)
-            {
-                Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
-            }
-        }
 
-        if (Input.GetKey("a"))
-        {
-            if (facing_right == true)
+            if (Input.GetKeyDown("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
             {
-                Flip();
-                facing_right = false;
+                transform.gameObject.GetComponent<FlyEnergy>().BeginFly();
             }
-            if (can_move == true)
+            if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
             {
-                Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
+                on_air = true;
+                character_rb.velocity = new Vector2(0.0f, 0.0f);
+                character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
             }
-        }
-
-        if (Input.GetKeyDown("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
-        {
-            transform.gameObject.GetComponent<FlyEnergy>().BeginFly();
-        }
-        if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
-        {
-            on_air = true;
-            character_rb.velocity = new Vector2(0.0f, 0.0f);
-            character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
-        }
-        else if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
-        {
-            transform.gameObject.GetComponent<FlyEnergy>().StopFly();
-        }
-        if (Input.GetKeyUp("space"))
-        {
-            transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+            else if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
+            {
+                transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+            }
+            if (Input.GetKeyUp("space"))
+            {
+                transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+            }
         }
 
     }
@@ -98,6 +101,14 @@ public class GhostController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            loseUI.SetActive(true);
+        }
     }
 
 }

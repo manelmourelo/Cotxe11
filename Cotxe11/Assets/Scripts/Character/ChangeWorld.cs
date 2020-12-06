@@ -30,7 +30,10 @@ public class ChangeWorld : MonoBehaviour
             PlayerDay.SetActive(false);
             PlayerNight.SetActive(true);
 
+            PlayerPrefs.SetFloat("FlyEnergy", PlayerDay.GetComponent<ProgressBar>().progress_bar.fillAmount);
+
             CMVirtualCam.Follow = PlayerNight.transform;
+            transform.gameObject.SetActive(false);
         }
     }
 
