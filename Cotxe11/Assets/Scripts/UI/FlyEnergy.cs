@@ -12,6 +12,7 @@ public class FlyEnergy : MonoBehaviour
     private float timer = 0.0f;
     private float prev_time = 0.0f;
     public float current_energy_lose = 0.1f;
+    public float max_energy_lose = 0.001f;
 
     public float energy_lose = 0.1f;
     public float energy_lose_increment = 0.1f;
@@ -38,9 +39,13 @@ public class FlyEnergy : MonoBehaviour
         if (is_flying == true)
         {
             timer += Time.deltaTime;
-            if (timer >= prev_time + time2increase)
+            if (timer >= prev_time + time2increase && current_energy_lose < max_energy_lose)
             {
                 current_energy_lose += energy_lose_increment;
+                if (current_energy_lose > max_energy_lose)
+                {
+                    current_energy_lose = max_energy_lose;
+                }
             }
             if (progress_bar.fillAmount >= 0.0f + current_energy_lose)
             {
