@@ -226,6 +226,9 @@ MonoBehaviour:
   loseUI: {fileID: 0}
   WinUI: {fileID: 0}
   land_audio: {fileID: 8300000, guid: 27e53ca5ea3244349aaa8259f680a7e3, type: 3}
+  death_audio: {fileID: 8300000, guid: 1622ee9f1d3ca4f419d59b069cf07b9a, type: 3}
+  glide_audio: {fileID: 8300000, guid: 8d796999a8342df43a3cc5762ae2f3a3, type: 3}
+  is_dead: 0
 --- !u!114 &1281760885616654880
 MonoBehaviour:
   m_ObjectHideFlags: 0
