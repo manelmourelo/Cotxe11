@@ -201,6 +201,7 @@ MonoBehaviour:
   max_speed: 5
   bounce_multiplier: 3
   climb_speed: 2
+  climb_horizontal_impulse: 0.1
   on_air: 0
   can_move: 1
   can_climb: 0

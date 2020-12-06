@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour
     public float max_speed = 5.0f;
     public float bounce_multiplier = 3.0f;
     public float climb_speed = 2.0f;
+    public float climb_horizontal_impulse = 0.1f;
 
 
     private bool facing_right = true;
@@ -24,11 +25,13 @@ public class CharacterController : MonoBehaviour
     public AudioClip land_audio = null;
 
     private Rigidbody2D character_rb = null;
+    private Vector2 default_gravity = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         character_rb = GetComponent<Rigidbody2D>();
+        default_gravity = Physics2D.gravity;
     }
 
     // Update is called once per frame
@@ -45,12 +48,7 @@ public class CharacterController : MonoBehaviour
             }
             if (can_move == true) {
                 Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                float new_speed = speed;
-                if (on_air == true)
-                {
-                    new_speed /= 2;
-                }
-                transform.position += movement * new_speed * Time.deltaTime;
+                transform.position += movement * speed * Time.deltaTime;
             }
         }
 
@@ -63,12 +61,7 @@ public class CharacterController : MonoBehaviour
             }
             if (can_move == true) {
                 Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                float new_speed = speed;
-                if (on_air == true)
-                {
-                    new_speed /= 2;
-                }
-                transform.position += movement * new_speed * Time.deltaTime;
+                transform.position += movement * speed * Time.deltaTime;
             }
         }
 
@@ -100,21 +93,21 @@ public class CharacterController : MonoBehaviour
                 transform.position += movement * climb_speed * Time.deltaTime;
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
             {
                 
                 character_rb.velocity = new Vector2(0.0f, 0.0f);
 
                 if (facing_right)
                 {
-                    character_rb.AddForce(new Vector2(-0.7f, 1f) * jump_force, ForceMode2D.Impulse);
+                    character_rb.AddForce(new Vector2(-climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
                     facing_right = false;
                     Flip();
                 }
 
                 else
                 {
-                    character_rb.AddForce(new Vector2(0.7f, 1f) * jump_force, ForceMode2D.Impulse);
+                    character_rb.AddForce(new Vector2(climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
                     facing_right = true;
                     Flip();
                 }
@@ -154,6 +147,7 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Death")
         {
+            Physics2D.gravity = default_gravity;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
