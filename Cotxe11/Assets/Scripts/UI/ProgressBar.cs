@@ -28,4 +28,14 @@ public class ProgressBar : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Orb")
+        {
+            Destroy(collision.gameObject);
+            current_orbs++;
+        }
+    }
+
 }

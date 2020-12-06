@@ -25,14 +25,22 @@ public class MoveCollider : MonoBehaviour
     {
         if(collision.gameObject.tag == "Climb")
         {
-            Player.GetComponent<CharacterController>().can_climb = true;
-            Physics2D.gravity = new Vector2 (0,0);
-            Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
+            if (Player.GetComponent<CharacterController>() != null) {
+                Player.GetComponent<CharacterController>().can_climb = true;
+                Physics2D.gravity = new Vector2(0, 0);
+                Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
+            }
         }
 
         if (collision.gameObject.tag == "Ground") 
         {
-            Player.GetComponent<CharacterController>().can_move = false;
+            if (Player.GetComponent<CharacterController>() != null) {
+                Player.GetComponent<CharacterController>().can_move = false;
+            }
+            else if (Player.GetComponent<GhostController>() != null)
+            {
+                Player.GetComponent<GhostController>().can_move = false;
+            }
         }
     } 
 
@@ -41,13 +49,23 @@ public class MoveCollider : MonoBehaviour
 
         if (collision.gameObject.tag == "Climb")
         {
-            Player.GetComponent<CharacterController>().can_climb = false;
-            Physics2D.gravity = default_gravity;
+            if (Player.GetComponent<CharacterController>() != null)
+            {
+                Player.GetComponent<CharacterController>().can_climb = false;
+                Physics2D.gravity = default_gravity;
+            }
         }
 
         if (collision.gameObject.tag == "Ground")
         {
-            Player.GetComponent<CharacterController>().can_move = true;
+            if (Player.GetComponent<CharacterController>() != null)
+            {
+                Player.GetComponent<CharacterController>().can_move = true;
+            }
+            else if (Player.GetComponent<GhostController>() != null)
+            {
+                Player.GetComponent<GhostController>().can_move = true;
+            }
         }
     }
 
