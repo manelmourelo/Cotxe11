@@ -733,6 +733,10 @@ PrefabInstance:
       propertyPath: plant
       value: 
       objectReference: {fileID: 327296190}
+    - target: {fileID: 433056532, guid: 8cfe8160959d80c4bac3538577405a94, type: 3}
+      propertyPath: camera_audio
+      value: 
+      objectReference: {fileID: 1652012730}
     - target: {fileID: 915514664994677846, guid: 8cfe8160959d80c4bac3538577405a94,
         type: 3}
       propertyPath: m_Name
