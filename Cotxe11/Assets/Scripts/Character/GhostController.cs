@@ -92,13 +92,15 @@ public class GhostController : MonoBehaviour
             }
         }
 
-
-        if (collision.gameObject.tag == "Bounce")
-        {
-            on_air = true;
-            character_rb.velocity = new Vector2(0.0f, 0.0f);
-            character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
-        }
+        //Probably will not need
+        // if (collision.gameObject.tag == "Bounce")
+        // {   
+        // 
+        //
+        //     on_air = true;
+        //     character_rb.velocity = new Vector2(0.0f, 0.0f);
+        //     character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
+        // }
     }
 
     private void Flip()
