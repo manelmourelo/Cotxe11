@@ -19,6 +19,10 @@ public class CharacterController : MonoBehaviour
 
     public int current_jumps = 0;
 
+    public AudioClip jump_audio = null;
+    public AudioClip bounce_audio = null;
+    public AudioClip land_audio = null;
+
     private Rigidbody2D character_rb = null;
 
     // Start is called before the first frame update
@@ -41,7 +45,12 @@ public class CharacterController : MonoBehaviour
             }
             if (can_move == true) {
                 Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
+                float new_speed = speed;
+                if (on_air == true)
+                {
+                    new_speed /= 2;
+                }
+                transform.position += movement * new_speed * Time.deltaTime;
             }
         }
 
@@ -54,7 +63,12 @@ public class CharacterController : MonoBehaviour
             }
             if (can_move == true) {
                 Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
+                float new_speed = speed;
+                if (on_air == true)
+                {
+                    new_speed /= 2;
+                }
+                transform.position += movement * new_speed * Time.deltaTime;
             }
         }
 
@@ -64,6 +78,8 @@ public class CharacterController : MonoBehaviour
             on_air = true;
             character_rb.velocity = new Vector2(0.0f,0.0f);
             character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
+            GetComponent<AudioSource>().clip = jump_audio;
+            GetComponent<AudioSource>().Play();
         }
 
         if (can_climb)
@@ -116,6 +132,8 @@ public class CharacterController : MonoBehaviour
         {
             current_jumps = 0;
             on_air = false;
+            GetComponent<AudioSource>().clip = land_audio;
+            GetComponent<AudioSource>().Play();
         }
 
 
@@ -124,6 +142,8 @@ public class CharacterController : MonoBehaviour
             on_air = true;
             character_rb.velocity = new Vector2(0.0f, 0.0f);
             character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
+            GetComponent<AudioSource>().clip = bounce_audio;
+            GetComponent<AudioSource>().Play();
         }
     }
 

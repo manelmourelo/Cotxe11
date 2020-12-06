@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ghost: {fileID: 0}
   plant: {fileID: 0}
+  camera_audio: {fileID: 0}
 --- !u!1 &4169756979592864228
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ghost: {fileID: 0}
   plant: {fileID: 0}
+  camera_audio: {fileID: 0}
 --- !u!1 &7057290044922485871
 GameObject:
   m_ObjectHideFlags: 0

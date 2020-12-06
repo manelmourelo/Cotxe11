@@ -6,6 +6,7 @@ public class GroundCollider : MonoBehaviour
 {
 
     private GameObject Player = null;
+    public AudioClip land_audio = null;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class GroundCollider : MonoBehaviour
         {
             Player.GetComponent<CharacterController>().on_air = false;
             Player.GetComponent<CharacterController>().current_jumps = 0;
+            Player.GetComponent<AudioSource>().clip = land_audio;
+            Player.GetComponent<AudioSource>().Play();
         }
     }
 

@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6341998129053912783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.52, y: -0.48, z: 0}
+  m_LocalPosition: {x: 16.67, y: -0.48, z: 113.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,3 +122,6 @@ MonoBehaviour:
   PlayerDay: {fileID: 0}
   PlayerNight: {fileID: 0}
   CMCamera: {fileID: 0}
+  WinCollider: {fileID: 0}
+  grab_audio: {fileID: 8300000, guid: 1f0a1828b8e416542bbd62be0b616133, type: 3}
+  night_music: {fileID: 8300000, guid: 2191a68bbc2055b4dada1a1fd0758561, type: 3}
