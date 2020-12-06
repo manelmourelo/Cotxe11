@@ -68,7 +68,7 @@ public class CharacterController : MonoBehaviour
 
         if (can_climb)
         {
-            if (Input.GetKey("space"))
+            if (Input.GetKey("w"))
             {
                 Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
                 transform.position += (movement * climb_speed * Time.deltaTime);
@@ -79,8 +79,28 @@ public class CharacterController : MonoBehaviour
                 Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
                 transform.position += movement * climb_speed * Time.deltaTime;
             }
-        }
 
+            if (Input.GetButtonDown("Jump"))
+            {
+                current_jumps = 1;
+                on_air = true;
+                character_rb.velocity = new Vector2(0.0f, 0.0f);
+
+                if (facing_right)
+                {
+                    character_rb.AddForce(new Vector2(-0.7f, 1f) * jump_force, ForceMode2D.Impulse);
+                    facing_right = false;
+                    Flip();
+                }
+
+                else
+                {
+                    character_rb.AddForce(new Vector2(0.7f, 1f) * jump_force, ForceMode2D.Impulse);
+                    facing_right = true;
+                    Flip();
+                }
+            }
+        }
     }
 
     private void Flip()
