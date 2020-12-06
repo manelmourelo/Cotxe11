@@ -36,7 +36,7 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         //Inputs
-        if (loseUI.activeSelf == false) {
+        if (loseUI.activeSelf == false && WinUI.activeSelf == false) {
             if (Input.GetKey("d"))
             {
                 if (facing_right == false)
