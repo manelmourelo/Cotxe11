@@ -30,6 +30,7 @@ public class LoseUI : MonoBehaviour
     {
         Ghost.transform.position = plant.transform.position;
         Ghost.GetComponent<FlyEnergy>().progress_bar.fillAmount = PlayerPrefs.GetFloat("FlyEnergy");
+        Ghost.GetComponent<FlyEnergy>().enough_energy = true;
         transform.parent.gameObject.SetActive(false);
     }
 

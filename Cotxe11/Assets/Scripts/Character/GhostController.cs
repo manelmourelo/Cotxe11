@@ -85,6 +85,10 @@ public class GhostController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             on_air = false;
+            if (transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
+            {
+                loseUI.SetActive(true);
+            }
         }
 
 
