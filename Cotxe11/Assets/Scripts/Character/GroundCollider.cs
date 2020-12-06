@@ -24,8 +24,10 @@ public class GroundCollider : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
-            Player.GetComponent<CharacterController>().on_air = false;
-            Player.GetComponent<CharacterController>().current_jumps = 0;
+            if (Player.GetComponent<CharacterController>() != null) {
+                Player.GetComponent<CharacterController>().on_air = false;
+                Player.GetComponent<CharacterController>().current_jumps = 0;
+            }
             Player.GetComponent<AudioSource>().clip = land_audio;
             Player.GetComponent<AudioSource>().Play();
         }

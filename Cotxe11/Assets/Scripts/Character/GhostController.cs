@@ -20,6 +20,8 @@ public class GhostController : MonoBehaviour
     public GameObject loseUI = null;
     public GameObject WinUI = null;
 
+    public AudioClip land_audio = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,11 @@ public class GhostController : MonoBehaviour
             if (transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
             {
                 loseUI.SetActive(true);
+            }
+            else
+            {
+                GetComponent<AudioSource>().clip = land_audio;
+                GetComponent<AudioSource>().Play();
             }
         }
 
