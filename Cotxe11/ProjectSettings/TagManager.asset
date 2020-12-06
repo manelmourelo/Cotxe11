@@ -8,6 +8,7 @@ TagManager:
   - Climb
   - Bounce
   - Orb
+  - Death
   layers:
   - Default
   - TransparentFX
