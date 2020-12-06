@@ -21,6 +21,10 @@ public class GhostController : MonoBehaviour
     public GameObject WinUI = null;
 
     public AudioClip land_audio = null;
+    public AudioClip death_audio = null;
+    public AudioClip glide_audio = null;
+
+    public bool is_dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +68,8 @@ public class GhostController : MonoBehaviour
             if (Input.GetKeyDown("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
             {
                 transform.gameObject.GetComponent<FlyEnergy>().BeginFly();
+                GetComponent<AudioSource>().clip = glide_audio;
+                GetComponent<AudioSource>().Play();
             }
             if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
             {
@@ -94,8 +100,10 @@ public class GhostController : MonoBehaviour
             }
             else
             {
-                GetComponent<AudioSource>().clip = land_audio;
-                GetComponent<AudioSource>().Play();
+                if (is_dead == false) {
+                    GetComponent<AudioSource>().clip = land_audio;
+                    GetComponent<AudioSource>().Play();
+                }
             }
         }
 
@@ -121,6 +129,9 @@ public class GhostController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Death")
         {
+            GetComponent<AudioSource>().clip = death_audio;
+            GetComponent<AudioSource>().Play();
+            is_dead = true;
             loseUI.SetActive(true);
         }
 

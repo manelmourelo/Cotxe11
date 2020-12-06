@@ -30,6 +30,7 @@ public class LoseUI : MonoBehaviour
     public void RestartNight()
     {
         Ghost.transform.position = plant.transform.position;
+        Ghost.GetComponent<GhostController>().is_dead = false;
         Ghost.GetComponent<FlyEnergy>().progress_bar.fillAmount = PlayerPrefs.GetFloat("FlyEnergy");
         Ghost.GetComponent<FlyEnergy>().enough_energy = true;
         transform.parent.gameObject.SetActive(false);

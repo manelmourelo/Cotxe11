@@ -17,12 +17,15 @@ public class CharacterController : MonoBehaviour
     public bool on_air = false;
     public bool can_move = true;
     public bool can_climb = false;
+    private bool is_dead = false;
 
     public int current_jumps = 0;
 
     public AudioClip jump_audio = null;
     public AudioClip bounce_audio = null;
     public AudioClip land_audio = null;
+    public AudioClip double_jump_audio = null;
+    public AudioClip death_audio = null;
 
     private Rigidbody2D character_rb = null;
     private Vector2 default_gravity = Vector2.zero;
@@ -39,77 +42,97 @@ public class CharacterController : MonoBehaviour
     {
         //Inputs
 
-        if (Input.GetKey("d"))
+        if (is_dead == true)
         {
-            if (facing_right == false)
+            if (GetComponent<AudioSource>().isPlaying == false)
             {
-                Flip();
-                facing_right = true;
-            }
-            if (can_move == true) {
-                Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-
-        if (Input.GetKey("a"))
+        else
         {
-            if (facing_right == true)
+            if (Input.GetKey("d"))
             {
-                Flip();
-                facing_right = false;
-            }
-            if (can_move == true) {
-                Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                transform.position += movement * speed * Time.deltaTime;
-            }
-        }
-
-        if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
-        {
-            current_jumps++;
-            on_air = true;
-            character_rb.velocity = new Vector2(0.0f,0.0f);
-            character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
-            GetComponent<AudioSource>().clip = jump_audio;
-            GetComponent<AudioSource>().Play();
-        }
-
-        if (can_climb)
-        {
-
-            current_jumps = 1;
-            on_air = true;
-
-            if (Input.GetKey("w"))
-            {
-                Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
-                transform.position += (movement * climb_speed * Time.deltaTime);
-            }
-
-            if (Input.GetKey("s"))
-            {
-                Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
-                transform.position += movement * climb_speed * Time.deltaTime;
-            }
-
-            if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
-            {
-                
-                character_rb.velocity = new Vector2(0.0f, 0.0f);
-
-                if (facing_right)
+                if (facing_right == false)
                 {
-                    character_rb.AddForce(new Vector2(-climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
-                    facing_right = false;
                     Flip();
+                    facing_right = true;
                 }
+                if (can_move == true)
+                {
+                    Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
+                    transform.position += movement * speed * Time.deltaTime;
+                }
+            }
 
+            if (Input.GetKey("a"))
+            {
+                if (facing_right == true)
+                {
+                    Flip();
+                    facing_right = false;
+                }
+                if (can_move == true)
+                {
+                    Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
+                    transform.position += movement * speed * Time.deltaTime;
+                }
+            }
+
+            if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
+            {
+                on_air = true;
+                character_rb.velocity = new Vector2(0.0f, 0.0f);
+                character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
+                if (current_jumps == 0)
+                {
+                    GetComponent<AudioSource>().clip = jump_audio;
+                    GetComponent<AudioSource>().Play();
+                }
                 else
                 {
-                    character_rb.AddForce(new Vector2(climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
-                    facing_right = true;
-                    Flip();
+                    GetComponent<AudioSource>().clip = double_jump_audio;
+                    GetComponent<AudioSource>().Play();
+                }
+                current_jumps++;
+            }
+
+            if (can_climb)
+            {
+
+                current_jumps = 1;
+                on_air = true;
+
+                if (Input.GetKey("w"))
+                {
+                    Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
+                    transform.position += (movement * climb_speed * Time.deltaTime);
+                }
+
+                if (Input.GetKey("s"))
+                {
+                    Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
+                    transform.position += movement * climb_speed * Time.deltaTime;
+                }
+
+                if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
+                {
+
+                    character_rb.velocity = new Vector2(0.0f, 0.0f);
+
+                    if (facing_right)
+                    {
+                        character_rb.AddForce(new Vector2(-climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
+                        facing_right = false;
+                        Flip();
+                    }
+
+                    else
+                    {
+                        character_rb.AddForce(new Vector2(climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
+                        facing_right = true;
+                        Flip();
+                    }
                 }
             }
         }
@@ -147,8 +170,10 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Death")
         {
+            GetComponent<AudioSource>().clip = death_audio;
+            GetComponent<AudioSource>().Play();
             Physics2D.gravity = default_gravity;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            is_dead = true;
         }
     }
 
