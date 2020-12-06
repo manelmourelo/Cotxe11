@@ -18,6 +18,7 @@ public class GhostController : MonoBehaviour
     private Rigidbody2D character_rb = null;
 
     public GameObject loseUI = null;
+    public GameObject WinUI = null;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +113,11 @@ public class GhostController : MonoBehaviour
         if (collision.gameObject.tag == "Death")
         {
             loseUI.SetActive(true);
+        }
+
+        if (collision.gameObject.tag == "Win")
+        {
+            WinUI.SetActive(true);
         }
     }
 

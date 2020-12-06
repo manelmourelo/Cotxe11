@@ -8,6 +8,7 @@ public class ChangeWorld : MonoBehaviour
     public GameObject PlayerDay = null;
     public GameObject PlayerNight = null;
     public GameObject CMCamera = null;
+    public GameObject WinCollider = null;
 
     private CinemachineVirtualCamera CMVirtualCam;
 
@@ -15,6 +16,7 @@ public class ChangeWorld : MonoBehaviour
     void Start()
     {
         CMVirtualCam = CMCamera.GetComponent<CinemachineVirtualCamera>();
+        WinCollider.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class ChangeWorld : MonoBehaviour
         {
             PlayerDay.SetActive(false);
             PlayerNight.SetActive(true);
+            WinCollider.SetActive(true);
 
             PlayerPrefs.SetFloat("FlyEnergy", PlayerDay.GetComponent<ProgressBar>().progress_bar.fillAmount);
 

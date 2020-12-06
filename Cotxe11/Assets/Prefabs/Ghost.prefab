@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1281760885616654880}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   max_speed: 5
   bounce_multiplier: 3
   can_move: 1
+  loseUI: {fileID: 0}
 --- !u!114 &1281760885616654880
 MonoBehaviour:
   m_ObjectHideFlags: 0
