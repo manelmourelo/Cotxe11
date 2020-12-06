@@ -150,10 +150,8 @@ public class CharacterController : MonoBehaviour
         {
             current_jumps = 0;
             on_air = false;
-            if (is_dead == false) {
-                GetComponent<AudioSource>().clip = land_audio;
-                GetComponent<AudioSource>().Play();
-            }
+            GetComponent<AudioSource>().clip = land_audio;
+            GetComponent<AudioSource>().Play();
         }
 
 
@@ -163,12 +161,15 @@ public class CharacterController : MonoBehaviour
             character_rb.velocity = new Vector2(0.0f, 0.0f);
 
             //Get the bounce multiplier from the Bounce platform object
+            BouncePlatform bounce_platform = collision.gameObject.GetComponent<BouncePlatform>();
             float bounce_multiplier = 3.0f;
-            bounce_multiplier = collision.gameObject.GetComponent<BouncePlatform>().bounce_multiplier;
+            bounce_multiplier = bounce_platform.bounce_multiplier;
 
             character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
             GetComponent<AudioSource>().clip = bounce_audio;
             GetComponent<AudioSource>().Play();
+
+            bounce_platform.MakeBounceAnimation();
         }
     }
 
