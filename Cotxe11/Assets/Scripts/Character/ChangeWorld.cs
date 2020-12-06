@@ -25,7 +25,7 @@ public class ChangeWorld : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerDay")
+        if (collision.gameObject.tag == "Player")
         {
             PlayerDay.SetActive(false);
             PlayerNight.SetActive(true);
