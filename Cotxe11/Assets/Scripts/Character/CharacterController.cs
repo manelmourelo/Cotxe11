@@ -8,7 +8,6 @@ public class CharacterController : MonoBehaviour
     public float speed = 1.0f;
     public float jump_force = 200.0f;
     public float max_speed = 5.0f;
-    public float bounce_multiplier = 3.0f;
     public float climb_speed = 2.0f;
     public float climb_horizontal_impulse = 0.1f;
 
@@ -160,6 +159,11 @@ public class CharacterController : MonoBehaviour
         {
             on_air = true;
             character_rb.velocity = new Vector2(0.0f, 0.0f);
+
+            //Get the bounce multiplier from the Bounce platform object
+            float bounce_multiplier = 3.0f;
+            bounce_multiplier = collision.gameObject.GetComponent<BouncePlatform>().bounce_multiplier;
+
             character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
             GetComponent<AudioSource>().clip = bounce_audio;
             GetComponent<AudioSource>().Play();
