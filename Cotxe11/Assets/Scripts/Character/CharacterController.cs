@@ -150,8 +150,10 @@ public class CharacterController : MonoBehaviour
         {
             current_jumps = 0;
             on_air = false;
-            GetComponent<AudioSource>().clip = land_audio;
-            GetComponent<AudioSource>().Play();
+            if (is_dead == false) {
+                GetComponent<AudioSource>().clip = land_audio;
+                GetComponent<AudioSource>().Play();
+            }
         }
 
 
