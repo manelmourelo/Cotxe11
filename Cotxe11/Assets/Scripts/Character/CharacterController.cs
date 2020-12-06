@@ -13,11 +13,11 @@ public class CharacterController : MonoBehaviour
 
 
     private bool facing_right = true;
-    private bool on_air = false;
+    public bool on_air = false;
     public bool can_move = true;
     public bool can_climb = false;
 
-    private int current_jumps = 0;
+    public int current_jumps = 0;
 
     private Rigidbody2D character_rb = null;
 

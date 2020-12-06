@@ -32,7 +32,7 @@ public class MoveCollider : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Ground") 
+        if (collision.gameObject.tag == "Wall") 
         {
             if (Player.GetComponent<CharacterController>() != null) {
                 Player.GetComponent<CharacterController>().can_move = false;
@@ -56,7 +56,7 @@ public class MoveCollider : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Wall")
         {
             if (Player.GetComponent<CharacterController>() != null)
             {

@@ -10,6 +10,7 @@ TagManager:
   - Orb
   - Death
   - Win
+  - Wall
   layers:
   - Default
   - TransparentFX
