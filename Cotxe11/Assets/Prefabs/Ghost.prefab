@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 1281760885616654908}
   - component: {fileID: 1281760885616654880}
   - component: {fileID: 1931749267}
+  - component: {fileID: 1931749268}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Player
@@ -148,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: cef7f74062b78ab4bbf23db47dc04269,
+  m_Sprite: {fileID: 6656582412914418087, guid: ee3672e28552589409983ec1e279bc53,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,7 +178,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.41}
+    oldSize: {x: 0.24, y: 0.46}
     newSize: {x: 0.16, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -230,6 +231,7 @@ MonoBehaviour:
   death_audio: {fileID: 8300000, guid: 1622ee9f1d3ca4f419d59b069cf07b9a, type: 3}
   glide_audio: {fileID: 8300000, guid: 8d796999a8342df43a3cc5762ae2f3a3, type: 3}
   is_dead: 0
+  other_player_is_in_camera: 1
 --- !u!114 &1281760885616654880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +347,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1931749268
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281760885616654910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fddaa35d7827fc64380c66e9170b5809, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1281760886572623631
 GameObject:
   m_ObjectHideFlags: 0
