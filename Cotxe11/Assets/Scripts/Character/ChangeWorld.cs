@@ -44,6 +44,7 @@ public class ChangeWorld : MonoBehaviour
                 PlayerNight.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 PlayerNight.GetComponent<GhostController>().other_player_is_in_camera = false;
                 PlayerDay.SetActive(false);
+                CMVirtualCam.m_Lens.OrthographicSize = 9.0f;
                 transform.gameObject.SetActive(false);
             }
         }
@@ -68,7 +69,6 @@ public class ChangeWorld : MonoBehaviour
             transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
             CMCamera.GetComponent<AudioSource>().clip = night_music;
             CMCamera.GetComponent<AudioSource>().Play();
-            CMVirtualCam.m_Lens.OrthographicSize = 9.0f;
 
             PlayerNight.GetComponent<AudioSource>().clip = grab_audio;
             PlayerNight.GetComponent<AudioSource>().Play();
