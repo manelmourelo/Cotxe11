@@ -45,7 +45,7 @@ public class CharacterController : MonoBehaviour
     {
         //Inputs
 
-        if (other_player_is_in_camera == false) {
+        if (other_player_is_in_camera == false && Time.timeScale == 1) {
             if (is_dead == true)
             {
                 if (GetComponent<AudioSource>().isPlaying == false)

@@ -36,7 +36,7 @@ public class FlyEnergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (is_flying == true)
+        if (is_flying == true && Time.timeScale == 1)
         {
             timer += Time.deltaTime;
             if (timer >= prev_time + time2increase && current_energy_lose < max_energy_lose)

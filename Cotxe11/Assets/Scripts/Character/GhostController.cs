@@ -39,7 +39,7 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         //Inputs
-        if (other_player_is_in_camera == false) {
+        if (other_player_is_in_camera == false && Time.timeScale == 1) {
             if (loseUI.activeSelf == false && WinUI.activeSelf == false) {
                 if (Input.GetKey("d"))
                 {
