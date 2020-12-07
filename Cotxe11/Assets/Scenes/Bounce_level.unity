@@ -3376,13 +3376,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675624334}
-  m_LocalRotation: {x: 0.383241, y: 0.2483215, z: -0.4076334, w: 0.7907577}
-  m_LocalPosition: {x: -1.7, y: 30.97, z: 7.293945}
+  m_LocalRotation: {x: 0.17760491, y: 0.17410967, z: -0.36313492, w: 0.8979284}
+  m_LocalPosition: {x: -8.483, y: -1.301, z: 7.293945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 53.954002, y: 7.8410006, z: -50.546}
+  m_LocalEulerAnglesHint: {x: 26.449001, y: 11.839001, z: -41.247}
 --- !u!4 &721253417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3176915719866984927, guid: 947750fc3255d65488c2641ffa699433,
@@ -3877,7 +3877,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.10774128}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3888,7 +3888,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.7845174}
   m_EdgeRadius: 0
 --- !u!23 &869920855
 MeshRenderer:
@@ -3908,7 +3908,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3187e10579807fe4da2fe407e3eddcb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3944,13 +3944,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869920853}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2971, y: -4.366118, z: 0}
-  m_LocalScale: {x: 20.95792, y: 1.0756145, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 1.2971, y: -4.2385, z: 0}
+  m_LocalScale: {x: 20.95792, y: 1.3533015, z: 1}
   m_Children: []
   m_Father: {fileID: 1632761943}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1001 &877923492
 PrefabInstance:
   m_ObjectHideFlags: 0
