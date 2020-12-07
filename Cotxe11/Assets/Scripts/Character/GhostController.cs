@@ -27,11 +27,13 @@ public class GhostController : MonoBehaviour
     public bool is_dead = false;
 
     public bool other_player_is_in_camera = true;
+    private Animator ghost_animator = null;
 
     // Start is called before the first frame update
     void Start()
     {
         character_rb = GetComponent<Rigidbody2D>();
+        ghost_animator = GetComponent<Animator>();
         Flip();
     }
 
@@ -77,6 +79,7 @@ public class GhostController : MonoBehaviour
                 }
                 if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
                 {
+                    ghost_animator.SetBool("is_flying", true);
                     on_air = true;
                     character_rb.velocity = new Vector2(0.0f, 0.0f);
                     character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
@@ -87,6 +90,7 @@ public class GhostController : MonoBehaviour
                 }
                 if (Input.GetKeyUp("space"))
                 {
+                    ghost_animator.SetBool("is_flying", false);
                     transform.gameObject.GetComponent<FlyEnergy>().StopFly();
                 }
             }
