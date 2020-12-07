@@ -175,6 +175,9 @@ public class CharacterController : MonoBehaviour
             GetComponent<AudioSource>().clip = bounce_audio;
             GetComponent<AudioSource>().Play();
 
+            //Restore double jump
+            current_jumps = 1;
+
             bounce_platform.MakeBounceAnimation();
         }
     }
