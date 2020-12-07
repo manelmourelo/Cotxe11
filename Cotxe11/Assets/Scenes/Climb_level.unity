@@ -3116,6 +3116,26 @@ PrefabInstance:
       propertyPath: WinCollider
       value: 
       objectReference: {fileID: 190823438}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: level_light
+      value: 
+      objectReference: {fileID: 763389985}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: night_light_color.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: night_light_color.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: night_light_color.x
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 6341998129053912783, guid: 607374a7c41705b4ca1b7d78f17ede60,
         type: 3}
       propertyPath: m_Name

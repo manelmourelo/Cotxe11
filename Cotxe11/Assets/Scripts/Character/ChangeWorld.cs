@@ -15,6 +15,8 @@ public class ChangeWorld : MonoBehaviour
     private CinemachineVirtualCamera CMVirtualCam;
 
     private bool both_players_in_scene = false;
+    public Light level_light = null;
+    public Vector4 night_light_color;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +74,7 @@ public class ChangeWorld : MonoBehaviour
 
             PlayerNight.GetComponent<AudioSource>().clip = grab_audio;
             PlayerNight.GetComponent<AudioSource>().Play();
+            level_light.color = night_light_color;
 
             both_players_in_scene = true;
 
