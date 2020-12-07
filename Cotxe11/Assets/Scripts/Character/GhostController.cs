@@ -26,6 +26,8 @@ public class GhostController : MonoBehaviour
 
     public bool is_dead = false;
 
+    public bool other_player_is_in_camera = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,57 +39,58 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         //Inputs
-        if (loseUI.activeSelf == false && WinUI.activeSelf == false) {
-            if (Input.GetKey("d"))
-            {
-                if (facing_right == false)
+        if (other_player_is_in_camera == false) {
+            if (loseUI.activeSelf == false && WinUI.activeSelf == false) {
+                if (Input.GetKey("d"))
                 {
-                    Flip();
-                    facing_right = true;
+                    if (facing_right == false)
+                    {
+                        Flip();
+                        facing_right = true;
+                    }
+                    if (can_move == true)
+                    {
+                        Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
+                        transform.position += movement * speed * Time.deltaTime;
+                    }
                 }
-                if (can_move == true)
-                {
-                    Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                    transform.position += movement * speed * Time.deltaTime;
-                }
-            }
 
-            if (Input.GetKey("a"))
-            {
-                if (facing_right == true)
+                if (Input.GetKey("a"))
                 {
-                    Flip();
-                    facing_right = false;
+                    if (facing_right == true)
+                    {
+                        Flip();
+                        facing_right = false;
+                    }
+                    if (can_move == true)
+                    {
+                        Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
+                        transform.position += movement * speed * Time.deltaTime;
+                    }
                 }
-                if (can_move == true)
-                {
-                    Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                    transform.position += movement * speed * Time.deltaTime;
-                }
-            }
 
-            if (Input.GetKeyDown("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
-            {
-                transform.gameObject.GetComponent<FlyEnergy>().BeginFly();
-                GetComponent<AudioSource>().clip = glide_audio;
-                GetComponent<AudioSource>().Play();
-            }
-            if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
-            {
-                on_air = true;
-                character_rb.velocity = new Vector2(0.0f, 0.0f);
-                character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
-            }
-            else if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
-            {
-                transform.gameObject.GetComponent<FlyEnergy>().StopFly();
-            }
-            if (Input.GetKeyUp("space"))
-            {
-                transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+                if (Input.GetKeyDown("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
+                {
+                    transform.gameObject.GetComponent<FlyEnergy>().BeginFly();
+                    GetComponent<AudioSource>().clip = glide_audio;
+                    GetComponent<AudioSource>().Play();
+                }
+                if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == true)
+                {
+                    on_air = true;
+                    character_rb.velocity = new Vector2(0.0f, 0.0f);
+                    character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
+                }
+                else if (Input.GetKey("space") && transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
+                {
+                    transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+                }
+                if (Input.GetKeyUp("space"))
+                {
+                    transform.gameObject.GetComponent<FlyEnergy>().StopFly();
+                }
             }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

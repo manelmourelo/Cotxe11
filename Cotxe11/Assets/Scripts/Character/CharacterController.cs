@@ -12,7 +12,7 @@ public class CharacterController : MonoBehaviour
     public float climb_horizontal_impulse = 0.1f;
 
 
-    private bool facing_right = true;
+    public bool facing_right = true;
     public bool on_air = false;
     public bool can_move = true;
     public bool can_climb = false;
@@ -29,6 +29,9 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D character_rb = null;
     private Vector2 default_gravity = Vector2.zero;
 
+    public bool is_in_camera = true;
+    public bool other_player_is_in_camera = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,103 +45,105 @@ public class CharacterController : MonoBehaviour
     {
         //Inputs
 
-        if (is_dead == true)
-        {
-            if (GetComponent<AudioSource>().isPlaying == false)
+        if (other_player_is_in_camera == false) {
+            if (is_dead == true)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-        }
-        else
-        {
-            if (Input.GetKey("d"))
-            {
-                if (facing_right == false)
+                if (GetComponent<AudioSource>().isPlaying == false)
                 {
-                    Flip();
-                    facing_right = true;
-                }
-                if (can_move == true)
-                {
-                    Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
-                    transform.position += movement * speed * Time.deltaTime;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
-
-            if (Input.GetKey("a"))
+            else
             {
-                if (facing_right == true)
+                if (Input.GetKey("d"))
                 {
-                    Flip();
-                    facing_right = false;
-                }
-                if (can_move == true)
-                {
-                    Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
-                    transform.position += movement * speed * Time.deltaTime;
-                }
-            }
-
-            if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
-            {
-                on_air = true;
-                character_rb.velocity = new Vector2(0.0f, 0.0f);
-                character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
-                if (current_jumps == 0)
-                {
-                    GetComponent<AudioSource>().clip = jump_audio;
-                    GetComponent<AudioSource>().Play();
-                }
-                else
-                {
-                    GetComponent<AudioSource>().clip = double_jump_audio;
-                    GetComponent<AudioSource>().Play();
-                }
-                current_jumps++;
-            }
-
-            if (can_climb)
-            {
-
-                current_jumps = 1;
-                on_air = true;
-
-                if (Input.GetKey("w"))
-                {
-                    Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
-                    transform.position += (movement * climb_speed * Time.deltaTime);
-                }
-
-                if (Input.GetKey("s"))
-                {
-                    Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
-                    transform.position += movement * climb_speed * Time.deltaTime;
-                }
-
-                if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
-                {
-
-                    character_rb.velocity = new Vector2(0.0f, 0.0f);
-
-                    if (facing_right)
+                    if (facing_right == false)
                     {
-                        character_rb.AddForce(new Vector2(-climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
-                        facing_right = false;
                         Flip();
+                        facing_right = true;
                     }
+                    if (can_move == true)
+                    {
+                        Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
+                        transform.position += movement * speed * Time.deltaTime;
+                    }
+                }
 
+                if (Input.GetKey("a"))
+                {
+                    if (facing_right == true)
+                    {
+                        Flip();
+                        facing_right = false;
+                    }
+                    if (can_move == true)
+                    {
+                        Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
+                        transform.position += movement * speed * Time.deltaTime;
+                    }
+                }
+
+                if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
+                {
+                    on_air = true;
+                    character_rb.velocity = new Vector2(0.0f, 0.0f);
+                    character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
+                    if (current_jumps == 0)
+                    {
+                        GetComponent<AudioSource>().clip = jump_audio;
+                        GetComponent<AudioSource>().Play();
+                    }
                     else
                     {
-                        character_rb.AddForce(new Vector2(climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
-                        facing_right = true;
-                        Flip();
+                        GetComponent<AudioSource>().clip = double_jump_audio;
+                        GetComponent<AudioSource>().Play();
+                    }
+                    current_jumps++;
+                }
+
+                if (can_climb)
+                {
+
+                    current_jumps = 1;
+                    on_air = true;
+
+                    if (Input.GetKey("w"))
+                    {
+                        Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
+                        transform.position += (movement * climb_speed * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey("s"))
+                    {
+                        Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
+                        transform.position += movement * climb_speed * Time.deltaTime;
+                    }
+
+                    if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
+                    {
+
+                        character_rb.velocity = new Vector2(0.0f, 0.0f);
+
+                        if (facing_right)
+                        {
+                            character_rb.AddForce(new Vector2(-climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
+                            facing_right = false;
+                            Flip();
+                        }
+
+                        else
+                        {
+                            character_rb.AddForce(new Vector2(climb_horizontal_impulse, 1f) * jump_force, ForceMode2D.Impulse);
+                            facing_right = true;
+                            Flip();
+                        }
                     }
                 }
             }
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         Vector3 scale = transform.localScale;
         scale.x *= -1;
@@ -183,6 +188,11 @@ public class CharacterController : MonoBehaviour
             Physics2D.gravity = default_gravity;
             is_dead = true;
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        is_in_camera = false;
     }
 
 }
