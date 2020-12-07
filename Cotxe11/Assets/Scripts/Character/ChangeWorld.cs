@@ -40,6 +40,8 @@ public class ChangeWorld : MonoBehaviour
             }
             else
             {
+                PlayerNight.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                PlayerNight.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 PlayerNight.GetComponent<GhostController>().other_player_is_in_camera = false;
                 PlayerDay.SetActive(false);
                 transform.gameObject.SetActive(false);
@@ -54,6 +56,8 @@ public class ChangeWorld : MonoBehaviour
             //PlayerDay.SetActive(false);
             PlayerDay.GetComponent<CharacterController>().other_player_is_in_camera = true;
             PlayerNight.SetActive(true);
+            PlayerNight.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            PlayerNight.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             WinCollider.SetActive(true);
 
             PlayerPrefs.SetFloat("FlyEnergy", PlayerDay.GetComponent<ProgressBar>().progress_bar.fillAmount);
