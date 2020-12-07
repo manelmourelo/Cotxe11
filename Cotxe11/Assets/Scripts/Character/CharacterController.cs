@@ -22,6 +22,7 @@ public class CharacterController : MonoBehaviour
 
     public AudioClip jump_audio = null;
     public AudioClip bounce_audio = null;
+    public AudioClip bounce_big_audio = null;
     public AudioClip land_audio = null;
     public AudioClip double_jump_audio = null;
     public AudioClip death_audio = null;
@@ -194,7 +195,14 @@ public class CharacterController : MonoBehaviour
             bounce_multiplier = bounce_platform.bounce_multiplier;
 
             character_rb.AddForce(Vector2.up * jump_force * bounce_multiplier, ForceMode2D.Impulse);
-            GetComponent<AudioSource>().clip = bounce_audio;
+            if (bounce_multiplier == 1.25f)
+            {
+                GetComponent<AudioSource>().clip = bounce_audio;
+            }
+            else
+            {
+                GetComponent<AudioSource>().clip = bounce_big_audio;
+            }
             GetComponent<AudioSource>().Play();
 
             //Restore double jump

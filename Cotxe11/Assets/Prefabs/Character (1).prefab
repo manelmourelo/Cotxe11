@@ -177,7 +177,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.41}
+    oldSize: {x: 0.26, y: 0.41}
     newSize: {x: 0.16, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -203,15 +203,21 @@ MonoBehaviour:
   max_speed: 5
   climb_speed: 2
   climb_horizontal_impulse: 0.1
+  facing_right: 1
   on_air: 0
   can_move: 1
   can_climb: 0
   current_jumps: 0
   jump_audio: {fileID: 8300000, guid: d29e730a346cdff49a61b62bcce9579d, type: 3}
   bounce_audio: {fileID: 8300000, guid: c35eced3adbb1d0429d17b44dcf4f1d2, type: 3}
+  bounce_big_audio: {fileID: 8300000, guid: c35eced3adbb1d0429d17b44dcf4f1d2, type: 3}
   land_audio: {fileID: 8300000, guid: 27e53ca5ea3244349aaa8259f680a7e3, type: 3}
   double_jump_audio: {fileID: 8300000, guid: 216b82aef7370014faf079a6aae4ade2, type: 3}
   death_audio: {fileID: 8300000, guid: 1622ee9f1d3ca4f419d59b069cf07b9a, type: 3}
+  is_in_camera: 1
+  other_player_is_in_camera: 0
+  has_landed: 0
+  timer: 0
 --- !u!50 &2768436311791485281
 Rigidbody2D:
   serializedVersion: 4
