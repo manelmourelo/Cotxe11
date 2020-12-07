@@ -34,6 +34,7 @@ public class CharacterController : MonoBehaviour
     {
         character_rb = GetComponent<Rigidbody2D>();
         default_gravity = Physics2D.gravity;
+        Flip();
     }
 
     // Update is called once per frame
