@@ -66,7 +66,7 @@ public class ChangeWorld : MonoBehaviour
             CMVirtualCam.Follow = PlayerNight.transform;
             //transform.gameObject.SetActive(false);
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            transform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             CMCamera.GetComponent<AudioSource>().clip = night_music;
             CMCamera.GetComponent<AudioSource>().Play();
 
