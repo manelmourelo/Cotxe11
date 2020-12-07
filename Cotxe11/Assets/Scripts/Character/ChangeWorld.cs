@@ -68,6 +68,7 @@ public class ChangeWorld : MonoBehaviour
             transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
             CMCamera.GetComponent<AudioSource>().clip = night_music;
             CMCamera.GetComponent<AudioSource>().Play();
+            CMVirtualCam.m_Lens.OrthographicSize = 9.0f;
 
             PlayerNight.GetComponent<AudioSource>().clip = grab_audio;
             PlayerNight.GetComponent<AudioSource>().Play();
