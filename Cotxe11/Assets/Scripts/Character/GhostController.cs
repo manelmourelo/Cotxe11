@@ -30,6 +30,7 @@ public class GhostController : MonoBehaviour
     void Start()
     {
         character_rb = GetComponent<Rigidbody2D>();
+        Flip();
     }
 
     // Update is called once per frame
