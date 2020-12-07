@@ -9,6 +9,7 @@ public class LoseUI : MonoBehaviour
     public GameObject Ghost = null;
     public GameObject plant = null;
     public AudioSource camera_audio = null;
+    public AudioSource aud_source = null;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,13 @@ public class LoseUI : MonoBehaviour
 
     public void RestartDay()
     {
+        aud_source.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void RestartNight()
     {
+        aud_source.Play();
         Ghost.transform.position = plant.transform.position;
         Ghost.GetComponent<GhostController>().is_dead = false;
         Ghost.GetComponent<FlyEnergy>().progress_bar.fillAmount = PlayerPrefs.GetFloat("FlyEnergy");
