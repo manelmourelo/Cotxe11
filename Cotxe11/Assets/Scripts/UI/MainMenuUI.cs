@@ -24,7 +24,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Tutorial_level", LoadSceneMode.Single);
     }
 
     public void ControllsButton()

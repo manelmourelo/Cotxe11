@@ -8111,6 +8111,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2445250891089083844, guid: f5749a80de6d9bd4b9ea54f361136aea,
+        type: 3}
+      propertyPath: next_level
+      value: Bounce_level
+      objectReference: {fileID: 0}
     - target: {fileID: 2445250891089083845, guid: f5749a80de6d9bd4b9ea54f361136aea,
         type: 3}
       propertyPath: m_Name
