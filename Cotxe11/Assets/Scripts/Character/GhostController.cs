@@ -95,7 +95,7 @@ public class GhostController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Bounce")
         {
             on_air = false;
             if (transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)

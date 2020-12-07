@@ -27,6 +27,9 @@ public class GroundCollider : MonoBehaviour
             if (Player.GetComponent<CharacterController>() != null) {
                 Player.GetComponent<CharacterController>().on_air = false;
                 Player.GetComponent<CharacterController>().current_jumps = 0;
+                Player.GetComponent<CharacterController>().timer = 0.0f;
+                Player.GetComponent<CharacterController>().has_landed = true;
+                Player.GetComponent<Animator>().SetBool("jump", false);
             }
             Player.GetComponent<AudioSource>().clip = land_audio;
             Player.GetComponent<AudioSource>().Play();

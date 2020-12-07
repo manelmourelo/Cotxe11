@@ -32,17 +32,34 @@ public class CharacterController : MonoBehaviour
     public bool is_in_camera = true;
     public bool other_player_is_in_camera = false;
 
+    private Animator character_animator = null;
+    public bool has_landed = false;
+    public float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         character_rb = GetComponent<Rigidbody2D>();
         default_gravity = Physics2D.gravity;
+        character_animator = transform.gameObject.GetComponent<Animator>();
         Flip();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (has_landed == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 0.05f)
+            {
+                timer = 0.0f;
+                has_landed = false;
+                character_animator.SetBool("landed", true);
+            }
+        }
+
         //Inputs
 
         if (other_player_is_in_camera == false && Time.timeScale == 1) {
@@ -85,6 +102,8 @@ public class CharacterController : MonoBehaviour
 
                 if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
                 {
+                    character_animator.SetBool("jump", true);
+                    character_animator.SetBool("landed", false);
                     on_air = true;
                     character_rb.velocity = new Vector2(0.0f, 0.0f);
                     character_rb.AddForce(Vector2.up * jump_force, ForceMode2D.Impulse);
@@ -156,6 +175,9 @@ public class CharacterController : MonoBehaviour
         {
             current_jumps = 0;
             on_air = false;
+            has_landed = true;
+            timer = 0.0f;
+            character_animator.SetBool("jump", false);
             GetComponent<AudioSource>().clip = land_audio;
             GetComponent<AudioSource>().Play();
         }
