@@ -28,9 +28,9 @@ public class ProgressBar : MonoBehaviour
     {
         progress_bar.fillAmount = current_orbs/max_orbs;
 
-        if(Input.GetKeyDown("q")){
-            current_orbs++;
-        }
+        //if(Input.GetKeyDown("q")){
+        //    current_orbs++;
+        //}
 
         if (has_collided == true)
         {
