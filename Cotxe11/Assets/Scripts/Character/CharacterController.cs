@@ -245,6 +245,7 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Death")
         {
+            character_animator.SetBool("dead", true);
             GetComponent<AudioSource>().clip = death_audio;
             GetComponent<AudioSource>().Play();
             Physics2D.gravity = default_gravity;
