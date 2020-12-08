@@ -268,6 +268,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 0}
 --- !u!1 &35616681
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +536,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115314739}
   m_CullTransparentMesh: 0
+--- !u!1 &186105294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186105295}
+  - component: {fileID: 186105297}
+  - component: {fileID: 186105296}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &186105295
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186105294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438049947}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 133}
+  m_SizeDelta: {x: 654.32434, y: 87.66638}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &186105296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186105294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3927999, g: 0.9150943, b: 0.4182224, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e87f3c1082c3d70449ce09e24f326725, type: 3}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Returning Dream
+--- !u!222 &186105297
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186105294}
+  m_CullTransparentMesh: 0
 --- !u!1 &321920282
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +876,7 @@ RectTransform:
   - {fileID: 850559924}
   - {fileID: 64226713}
   - {fileID: 1161915748}
+  - {fileID: 186105295}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1191,7 +1271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -39}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1152309528
@@ -1341,6 +1421,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 1161915747}
   aud_source: {fileID: 438049948}
+  title: {fileID: 186105294}
 --- !u!1 &1161915747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1826,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 64226712}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 186105294}
 --- !u!1 &1561264409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,6 +1961,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 186105294}
 --- !u!114 &1596262020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2195,6 +2278,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 0}
 --- !u!1 &1773898992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2335,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 186105294}
 --- !u!114 &1773898995
 MonoBehaviour:
   m_ObjectHideFlags: 0

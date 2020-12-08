@@ -10,6 +10,7 @@ public class MainMenuUI : MonoBehaviour
     public GameObject controlls_ui = null;
     public GameObject credits_ui = null;
     public AudioSource aud_source = null;
+    public GameObject title = null;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class MainMenuUI : MonoBehaviour
         aud_source.Play();
         controlls_ui.SetActive(true);
         main_menu_ui.SetActive(false);
+        title.SetActive(false);
     }
 
     public void CreditsButton()
@@ -41,6 +43,7 @@ public class MainMenuUI : MonoBehaviour
         aud_source.Play();
         credits_ui.SetActive(true);
         main_menu_ui.SetActive(false);
+        title.SetActive(false);
     }
 
     public void ExitButton()
@@ -54,6 +57,7 @@ public class MainMenuUI : MonoBehaviour
         aud_source.Play();
         main_menu_ui.SetActive(true);
         transform.parent.gameObject.SetActive(false);
+        title.SetActive(true);
     }
 
 }

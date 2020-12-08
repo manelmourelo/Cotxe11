@@ -268,6 +268,7 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 0}
 --- !u!1 &56208446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 83}
+  m_AnchoredPosition: {x: 0, y: 86}
   m_SizeDelta: {x: 500, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593914200
@@ -1108,7 +1109,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e87f3c1082c3d70449ce09e24f326725, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -1354,3 +1355,4 @@ MonoBehaviour:
   controlls_ui: {fileID: 0}
   credits_ui: {fileID: 0}
   aud_source: {fileID: 438049948}
+  title: {fileID: 0}
