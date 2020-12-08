@@ -96,6 +96,7 @@ public class CharacterController : MonoBehaviour
                     }
                     if (can_move == true)
                     {
+                        character_animator.SetBool("run", true);
                         Vector3 movement = new Vector3(1.0f, 0.0f, 0.0f);
                         transform.position += movement * speed * Time.deltaTime;
                     }
@@ -110,13 +111,20 @@ public class CharacterController : MonoBehaviour
                     }
                     if (can_move == true)
                     {
+                        character_animator.SetBool("run", true);
                         Vector3 movement = new Vector3(-1.0f, 0.0f, 0.0f);
                         transform.position += movement * speed * Time.deltaTime;
                     }
                 }
 
+                if (Input.GetKeyUp("d") || Input.GetKeyUp("a"))
+                {
+                    character_animator.SetBool("run", false);
+                }
+
                 if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb && after_climb_jump_active)
                 {
+                    character_animator.SetBool("run", false);
                     character_animator.SetBool("jump", true);
                     character_animator.SetBool("landed", false);
                     on_air = true;
@@ -245,6 +253,7 @@ public class CharacterController : MonoBehaviour
 
     public void SetJumpAnimation()
     {
+        character_animator.SetBool("run", false);
         character_animator.SetBool("jump", true);
     }
 
