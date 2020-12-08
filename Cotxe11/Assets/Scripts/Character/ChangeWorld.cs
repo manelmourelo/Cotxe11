@@ -18,6 +18,9 @@ public class ChangeWorld : MonoBehaviour
     public Light level_light = null;
     public Vector4 night_light_color;
 
+    public GameObject day_background = null;
+    public GameObject night_background = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,12 @@ public class ChangeWorld : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            night_background.GetComponent<SpriteRenderer>().enabled = true;
+            foreach (Transform child in night_background.transform)
+            {
+                child.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            day_background.SetActive(false);
             //PlayerDay.SetActive(false);
             PlayerDay.GetComponent<CharacterController>().other_player_is_in_camera = true;
             PlayerNight.SetActive(true);

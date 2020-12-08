@@ -309,6 +309,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &108592928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2355346483215087782, guid: 03aaf27fcce85a34984e72e09cae5fac,
+    type: 3}
+  m_PrefabInstance: {fileID: 725641585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &166556109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2097,6 +2103,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &547338334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6495299119105324827, guid: 03aaf27fcce85a34984e72e09cae5fac,
+    type: 3}
+  m_PrefabInstance: {fileID: 725641585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &580592891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 915514664994677846, guid: 8cfe8160959d80c4bac3538577405a94,
@@ -2252,6 +2264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
+    - target: {fileID: 455125044701294778, guid: 03aaf27fcce85a34984e72e09cae5fac,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 2355346482780846630, guid: 03aaf27fcce85a34984e72e09cae5fac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3320,6 +3337,16 @@ PrefabInstance:
       propertyPath: night_light_color.x
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: night_background
+      value: 
+      objectReference: {fileID: 547338334}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: day_background
+      value: 
+      objectReference: {fileID: 108592928}
     - target: {fileID: 6341998129053912783, guid: 607374a7c41705b4ca1b7d78f17ede60,
         type: 3}
       propertyPath: m_Name
