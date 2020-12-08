@@ -20,6 +20,8 @@ public class ChangeWorld : MonoBehaviour
 
     public GameObject day_background = null;
     public GameObject night_background = null;
+    public GameObject day_mountains = null;
+    public GameObject night_mountains = null;
     public GameObject orbs = null;
 
     // Start is called before the first frame update
@@ -66,6 +68,12 @@ public class ChangeWorld : MonoBehaviour
                 child.GetComponent<SpriteRenderer>().enabled = true;
             }
             day_background.SetActive(false);
+            night_mountains.GetComponent<SpriteRenderer>().enabled = true;
+            foreach (Transform child in night_mountains.transform)
+            {
+                child.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            day_mountains.SetActive(false);
             //PlayerDay.SetActive(false);
             PlayerDay.GetComponent<CharacterController>().other_player_is_in_camera = true;
             PlayerNight.SetActive(true);

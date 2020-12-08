@@ -5439,6 +5439,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485151442}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1515359565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2355346484426262866, guid: 03aaf27fcce85a34984e72e09cae5fac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2355346483743030471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1562399139
 GameObject:
   m_ObjectHideFlags: 0
@@ -6462,6 +6468,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660379358}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1661097676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1661097676, guid: 03aaf27fcce85a34984e72e09cae5fac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2355346483743030471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1676877878
 GameObject:
   m_ObjectHideFlags: 0
@@ -8078,6 +8090,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
+    - target: {fileID: 1661097677, guid: 03aaf27fcce85a34984e72e09cae5fac, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 455125044701294778, guid: 03aaf27fcce85a34984e72e09cae5fac,
         type: 3}
       propertyPath: camera
@@ -8636,6 +8652,16 @@ PrefabInstance:
       propertyPath: orbs
       value: 
       objectReference: {fileID: 949232092}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: night_mountains
+      value: 
+      objectReference: {fileID: 1661097676}
+    - target: {fileID: 6341998129053912782, guid: 607374a7c41705b4ca1b7d78f17ede60,
+        type: 3}
+      propertyPath: day_mountains
+      value: 
+      objectReference: {fileID: 1515359565}
     - target: {fileID: 6341998129053912783, guid: 607374a7c41705b4ca1b7d78f17ede60,
         type: 3}
       propertyPath: m_Name
