@@ -168,6 +168,7 @@ public class GhostController : MonoBehaviour
 
         if (collision.gameObject.tag == "Win")
         {
+            Destroy(character_rb);
             WinUI.SetActive(true);
         }
 
