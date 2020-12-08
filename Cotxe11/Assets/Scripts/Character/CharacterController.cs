@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class CharacterController : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class CharacterController : MonoBehaviour
     public float timer = 0.0f;
     private float after_climb_jump = 0.0f;
     private bool after_climb_jump_active = true;
+
+    public CinemachineVirtualCamera CMVirtualCam;
+
+    public GameObject empty = null;
+    private GameObject tmp = null;
 
     // Start is called before the first frame update
     void Start()
@@ -245,9 +251,10 @@ public class CharacterController : MonoBehaviour
             is_dead = true;
         }
 
-        if (collision.gameObject.tag == "Death")
+        if (collision.gameObject.tag == "OutOfMap")
         {
-
+            tmp = Instantiate(empty, transform.position, Quaternion.identity);
+            CMVirtualCam.Follow = tmp.transform;
         }
 
     }

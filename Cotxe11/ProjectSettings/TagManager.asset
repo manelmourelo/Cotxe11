@@ -11,6 +11,7 @@ TagManager:
   - Death
   - Win
   - Wall
+  - OutOfMap
   layers:
   - Default
   - TransparentFX

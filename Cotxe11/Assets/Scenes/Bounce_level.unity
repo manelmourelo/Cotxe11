@@ -2283,6 +2283,112 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 318908363}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &327263089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327263093}
+  - component: {fileID: 327263092}
+  - component: {fileID: 327263091}
+  - component: {fileID: 327263090}
+  m_Layer: 0
+  m_Name: OutOfMapDetector
+  m_TagString: OutOfMap
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &327263090
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327263089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!23 &327263091
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327263089}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b2b150503d3ba7e488cb87d4689bef6b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &327263092
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327263089}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &327263093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327263089}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 104.03555, y: -12.762521, z: 7.293945}
+  m_LocalScale: {x: 246.13303, y: 1.2724553, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327296190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6341998129053912783, guid: 607374a7c41705b4ca1b7d78f17ede60,
@@ -4158,7 +4264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.040843, y: -2.5700002, z: -70.68606}
+  m_LocalPosition: {x: -9.013567, y: -2.5700002, z: -70.68606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1563439784}
@@ -10381,7 +10487,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0998278, y: 1}
+    m_SensorSize: {x: 2.165725, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10398,7 +10504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652012727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.040843, y: -2.5700002, z: -70.68606}
+  m_LocalPosition: {x: -9.013567, y: -2.5700002, z: -70.68606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499764930}
@@ -11763,11 +11869,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940547365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 104.03555, y: -12.762521, z: 7.293945}
+  m_LocalPosition: {x: 104.03555, y: -33, z: 7.293945}
   m_LocalScale: {x: 246.13303, y: 1.2724553, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1940547367
 BoxCollider2D:
@@ -12671,6 +12777,17 @@ PrefabInstance:
       propertyPath: WinUI
       value: 
       objectReference: {fileID: 3357315968774569010}
+    - target: {fileID: 1281760885616654908, guid: 4cd80a7de7af7d342b31f92a632985e0,
+        type: 3}
+      propertyPath: CMVirtualCam
+      value: 
+      objectReference: {fileID: 1652012728}
+    - target: {fileID: 1281760885616654908, guid: 4cd80a7de7af7d342b31f92a632985e0,
+        type: 3}
+      propertyPath: empty
+      value: 
+      objectReference: {fileID: 586494771003419938, guid: e2266c6089ff34b4c947f358e4068658,
+        type: 3}
     - target: {fileID: 1281760885616654910, guid: 4cd80a7de7af7d342b31f92a632985e0,
         type: 3}
       propertyPath: m_Name
@@ -12940,6 +13057,17 @@ PrefabInstance:
       propertyPath: bounce_big_audio
       value: 
       objectReference: {fileID: 8300000, guid: 73e9c5006e6edab45b213163b8ea4a0f, type: 3}
+    - target: {fileID: 2768436311791485294, guid: dd102011aa8ad6448a44f14dd255528d,
+        type: 3}
+      propertyPath: CMVirtualCam
+      value: 
+      objectReference: {fileID: 1652012728}
+    - target: {fileID: 2768436311791485294, guid: dd102011aa8ad6448a44f14dd255528d,
+        type: 3}
+      propertyPath: empty
+      value: 
+      objectReference: {fileID: 586494771003419938, guid: e2266c6089ff34b4c947f358e4068658,
+        type: 3}
     - target: {fileID: 4461708676303550174, guid: dd102011aa8ad6448a44f14dd255528d,
         type: 3}
       propertyPath: progress_bar

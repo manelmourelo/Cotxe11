@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GhostController : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class GhostController : MonoBehaviour
     public Animator ghost_animator = null;
 
     private float timer = 0.0f;
+
+    public CinemachineVirtualCamera CMVirtualCam;
+
+    public GameObject empty = null;
+    private GameObject tmp = null;
 
     // Start is called before the first frame update
     void Start()
@@ -164,6 +170,19 @@ public class GhostController : MonoBehaviour
         {
             WinUI.SetActive(true);
         }
+
+        if (collision.gameObject.tag == "OutOfMap")
+        {
+            tmp = Instantiate(empty, transform.position, Quaternion.identity);
+            CMVirtualCam.Follow = tmp.transform;
+        }
+
+    }
+
+    public void ResetCamera()
+    {
+        CMVirtualCam.Follow = transform;
+        Destroy(tmp);
     }
 
 }
