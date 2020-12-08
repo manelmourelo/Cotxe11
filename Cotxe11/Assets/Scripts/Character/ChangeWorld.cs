@@ -20,6 +20,7 @@ public class ChangeWorld : MonoBehaviour
 
     public GameObject day_background = null;
     public GameObject night_background = null;
+    public GameObject orbs = null;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +85,7 @@ public class ChangeWorld : MonoBehaviour
             PlayerNight.GetComponent<AudioSource>().clip = grab_audio;
             PlayerNight.GetComponent<AudioSource>().Play();
             level_light.color = night_light_color;
+            orbs.SetActive(false);
 
             both_players_in_scene = true;
 
