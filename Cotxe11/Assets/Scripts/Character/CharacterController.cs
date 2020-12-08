@@ -36,6 +36,8 @@ public class CharacterController : MonoBehaviour
     private Animator character_animator = null;
     public bool has_landed = false;
     public float timer = 0.0f;
+    private float after_climb_jump = 0.0f;
+    private bool after_climb_jump_active = true;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,18 @@ public class CharacterController : MonoBehaviour
                 character_animator.SetBool("landed", true);
             }
         }
+
+        //Climb polish
+
+        if (!after_climb_jump_active)
+        {
+            after_climb_jump += Time.deltaTime;
+            if(after_climb_jump >= 0.2f)
+            {
+                after_climb_jump_active = true;
+            }
+        }
+
 
         //Inputs
 
@@ -101,7 +115,7 @@ public class CharacterController : MonoBehaviour
                     }
                 }
 
-                if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb)
+                if (Input.GetButtonDown("Jump") && current_jumps < 2 && !can_climb && after_climb_jump_active)
                 {
                     character_animator.SetBool("jump", true);
                     character_animator.SetBool("landed", false);
@@ -143,6 +157,7 @@ public class CharacterController : MonoBehaviour
                     {
 
                         character_rb.velocity = new Vector2(0.0f, 0.0f);
+                        after_climb_jump_active = false;
 
                         if (facing_right)
                         {
