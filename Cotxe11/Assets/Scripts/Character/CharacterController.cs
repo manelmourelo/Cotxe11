@@ -228,4 +228,9 @@ public class CharacterController : MonoBehaviour
         is_in_camera = false;
     }
 
+    public void SetJumpAnimation()
+    {
+        character_animator.SetBool("jump", true);
+    }
+
 }

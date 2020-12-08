@@ -36,4 +36,17 @@ public class GroundCollider : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (Player.GetComponent<CharacterController>() != null)
+        {
+            if (Player.GetComponent<CharacterController>().on_air == false)
+            {
+                Player.GetComponent<CharacterController>().on_air = true;
+                Player.GetComponent<CharacterController>().current_jumps = 1;
+                Player.GetComponent<CharacterController>().SetJumpAnimation();
+            }
+        }
+    }
+
 }
