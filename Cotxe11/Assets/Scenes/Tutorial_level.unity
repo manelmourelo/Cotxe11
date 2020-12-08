@@ -7160,7 +7160,7 @@ GameObject:
   - component: {fileID: 1940547368}
   - component: {fileID: 1940547367}
   m_Layer: 0
-  m_Name: Spikes (2)
+  m_Name: DEATH BARRIER
   m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
