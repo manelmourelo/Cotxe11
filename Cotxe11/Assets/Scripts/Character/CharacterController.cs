@@ -244,6 +244,12 @@ public class CharacterController : MonoBehaviour
             Physics2D.gravity = default_gravity;
             is_dead = true;
         }
+
+        if (collision.gameObject.tag == "Death")
+        {
+
+        }
+
     }
 
     private void OnBecameInvisible()

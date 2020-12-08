@@ -36,6 +36,7 @@ public class LoseUI : MonoBehaviour
         Ghost.GetComponent<GhostController>().is_dead = false;
         Ghost.GetComponent<FlyEnergy>().progress_bar.fillAmount = PlayerPrefs.GetFloat("FlyEnergy");
         Ghost.GetComponent<FlyEnergy>().enough_energy = true;
+        Ghost.GetComponent<GhostController>().ghost_animator.SetBool("is_dead", false);
         transform.parent.gameObject.SetActive(false);
         camera_audio.Play();
     }

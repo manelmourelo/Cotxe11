@@ -27,7 +27,9 @@ public class GhostController : MonoBehaviour
     public bool is_dead = false;
 
     public bool other_player_is_in_camera = true;
-    private Animator ghost_animator = null;
+    public Animator ghost_animator = null;
+
+    private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +42,19 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (is_dead == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 1.5f)
+            {
+                loseUI.SetActive(true);
+            }
+        }
+
         //Inputs
         if (other_player_is_in_camera == false && Time.timeScale == 1) {
-            if (loseUI.activeSelf == false && WinUI.activeSelf == false) {
+            if (is_dead == false && WinUI.activeSelf == false) {
                 if (Input.GetKey("d"))
                 {
                     if (facing_right == false)
@@ -104,7 +116,10 @@ public class GhostController : MonoBehaviour
             on_air = false;
             if (transform.gameObject.GetComponent<FlyEnergy>().enough_energy == false)
             {
-                loseUI.SetActive(true);
+                is_dead = true;
+                timer = 0.0f;
+                ghost_animator.SetBool("is_dead", true);
+                //loseUI.SetActive(true);
             }
             else
             {
@@ -140,7 +155,9 @@ public class GhostController : MonoBehaviour
             GetComponent<AudioSource>().clip = death_audio;
             GetComponent<AudioSource>().Play();
             is_dead = true;
-            loseUI.SetActive(true);
+            timer = 0.0f;
+            ghost_animator.SetBool("is_dead", true);
+            //loseUI.SetActive(true);
         }
 
         if (collision.gameObject.tag == "Win")
