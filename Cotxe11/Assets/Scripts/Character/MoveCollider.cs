@@ -26,6 +26,11 @@ public class MoveCollider : MonoBehaviour
         if(collision.gameObject.tag == "Climb")
         {
             if (Player.GetComponent<CharacterController>() != null) {
+                Player.GetComponent<Animator>().SetBool("climb", true);
+                Player.GetComponent<Animator>().SetBool("jump", false);
+                Player.GetComponent<Animator>().SetBool("run", false);
+                Player.GetComponent<CharacterController>().climb_timer = 0.0f;
+                //Player.GetComponent<Animator>().enabled = false;
                 Player.GetComponent<CharacterController>().can_climb = true;
                 Player.GetComponent<CharacterController>().can_move = false;
                 Physics2D.gravity = new Vector2(0, 0);
@@ -52,6 +57,10 @@ public class MoveCollider : MonoBehaviour
         {
             if (Player.GetComponent<CharacterController>() != null)
             {
+                Player.GetComponent<Animator>().SetBool("jump", true);
+                Player.GetComponent<Animator>().SetBool("run", false);
+                Player.GetComponent<Animator>().SetBool("climb", false);
+                Player.GetComponent<Animator>().enabled = true;
                 Player.GetComponent<CharacterController>().can_climb = false;
                 Player.GetComponent<CharacterController>().can_move = true;
                 Physics2D.gravity = default_gravity;

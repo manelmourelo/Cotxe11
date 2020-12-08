@@ -44,6 +44,7 @@ public class CharacterController : MonoBehaviour
 
     public GameObject empty = null;
     private GameObject tmp = null;
+    public float climb_timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -155,21 +156,39 @@ public class CharacterController : MonoBehaviour
                     current_jumps = 1;
                     on_air = true;
 
+                    climb_timer += Time.deltaTime;
+                    if (climb_timer >= 0.5f)
+                    {
+                        character_animator.enabled = false;
+                    }
+
                     if (Input.GetKey("w"))
                     {
+                        character_animator.enabled = true;
                         Vector3 movement = new Vector3(0.0f, 1.0f, 0.0f);
                         transform.position += (movement * climb_speed * Time.deltaTime);
+                    }
+                    if (Input.GetKeyUp("w"))
+                    {
+                        character_animator.enabled = false;
                     }
 
                     if (Input.GetKey("s"))
                     {
+                        character_animator.enabled = true;
                         Vector3 movement = new Vector3(0.0f, -1.0f, 0.0f);
                         transform.position += movement * climb_speed * Time.deltaTime;
+                    }
+                    if (Input.GetKeyUp("s"))
+                    {
+                        character_animator.enabled = false;
                     }
 
                     if ((Input.GetKeyDown("d") && facing_right) || (Input.GetKeyDown("a") && !facing_right))
                     {
-
+                        character_animator.enabled = true;
+                        character_animator.SetBool("jump", true);
+                        character_animator.SetBool("climb", false);
                         character_rb.velocity = new Vector2(0.0f, 0.0f);
                         after_climb_jump_active = false;
 
