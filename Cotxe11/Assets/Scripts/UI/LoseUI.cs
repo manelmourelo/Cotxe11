@@ -38,6 +38,7 @@ public class LoseUI : MonoBehaviour
         Ghost.GetComponent<FlyEnergy>().enough_energy = true;
         Ghost.GetComponent<GhostController>().ghost_animator.SetBool("is_dead", false);
         Ghost.GetComponent<GhostController>().ResetCamera();
+        Ghost.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
         transform.parent.gameObject.SetActive(false);
         camera_audio.Play();
     }
